@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "creation": "2026-06-25 15:21:22.674650",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enable_cheque_notification",
+  "notify_user",
+  "notify_before"
+ ],
+ "fields": [
+  {
+   "fieldname": "enable_cheque_notification",
+   "fieldtype": "Select",
+   "label": "Enable Cheque Notification",
+   "options": "\nYes\nNo"
+  },
+  {
+   "depends_on": "eval:doc.enable_cheque_notification == 'Yes';",
+   "fieldname": "notify_user",
+   "fieldtype": "Table MultiSelect",
+   "label": "Notify User",
+   "mandatory_depends_on": "eval:doc.enable_cheque_notification == 'Yes';",
+   "options": "Cheque Tracker Settings User"
+  },
+  {
+   "depends_on": "eval:doc.enable_cheque_notification == 'Yes';",
+   "description": "Number of days before the cheque date to send a notification.",
+   "fieldname": "notify_before",
+   "fieldtype": "Int",
+   "label": "Notify Before",
+   "mandatory_depends_on": "eval:doc.enable_cheque_notification == 'Yes';"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-06-25 15:35:39.356829",
+ "modified_by": "Administrator",
+ "module": "Cheque Tracker",
+ "name": "Cheque Tracker Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,138 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-06-25 15:13:47.375870",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "sales_invoice",
+  "cheque_reference_no",
+  "status",
+  "payment_entry",
+  "cheque_date",
+  "cheque_photo",
+  "amended_from",
+  "cheque_amount",
+  "outstanding_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "cheque_reference_no",
+   "fieldtype": "Data",
+   "label": "Cheque Reference No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nDeposited\nCleared\nBounced"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "CHQ-."
+  },
+  {
+   "fieldname": "cheque_date",
+   "fieldtype": "Date",
+   "in_standard_filter": 1,
+   "label": "Cheque Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cheque_photo",
+   "fieldtype": "Attach",
+   "label": "Cheque Photo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Cheque Tracker",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "reqd": 1
+  },
+  {
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Data",
+   "label": "Outstanding Amount"
+  },
+  {
+   "fieldname": "payment_entry",
+   "fieldtype": "Link",
+   "label": "Payment Entry",
+   "options": "Payment Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cheque_amount",
+   "fieldtype": "Currency",
+   "label": "Cheque Amount",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-06-26 09:36:50.623007",
+ "modified_by": "Administrator",
+ "module": "Cheque Tracker",
+ "name": "Cheque Tracker",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "Blue",
+   "title": "Pending"
+  },
+  {
+   "color": "Yellow",
+   "title": "Deposited"
+  },
+  {
+   "color": "Green",
+   "title": "Cleared"
+  },
+  {
+   "color": "Red",
+   "title": "Bounced"
+  }
+ ]
+}

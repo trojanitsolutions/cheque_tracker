@@ -43,7 +43,10 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+	"Sales Invoice": "public/js/sales_invoice.js",
+	"Payment Entry": "public/js/payment_entry.js",
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -138,34 +141,21 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Payment Entry": {
+		"before_submit": "cheque_tracker.cheque_tracker.payment_entry_hooks.validate_cheque_payment",
+		"on_submit": "cheque_tracker.cheque_tracker.payment_entry_hooks.on_payment_entry_submit",
+	}
+}
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"cheque_tracker.tasks.all"
-# 	],
-# 	"daily": [
-# 		"cheque_tracker.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"cheque_tracker.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"cheque_tracker.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"cheque_tracker.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"daily": [
+		"cheque_tracker.cheque_tracker.tasks.send_cheque_due_notifications"
+	],
+}
 
 # Testing
 # -------
@@ -190,9 +180,9 @@ app_license = "mit"
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
-# override_doctype_dashboards = {
-# 	"Task": "cheque_tracker.task.get_dashboard_data"
-# }
+override_doctype_dashboards = {
+	"Sales Invoice": "cheque_tracker.cheque_tracker.overrides.get_sales_invoice_dashboard_data"
+}
 
 # exempt linked doctypes from being automatically cancelled
 #
