@@ -151,6 +151,10 @@ doc_events = {
 # Scheduled Tasks
 # ---------------
 
+fixtures = [
+	{"doctype": "Translation"}
+]
+
 scheduler_events = {
 	"daily": [
 		"cheque_tracker.cheque_tracker.tasks.send_cheque_due_notifications"
