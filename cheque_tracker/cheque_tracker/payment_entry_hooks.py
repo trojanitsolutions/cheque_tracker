@@ -3,7 +3,7 @@ from frappe import _
 
 
 def validate_cheque_payment(doc, method=None):
-	"""before_submit: block if no submitted+Cleared Cheque Tracker (without a PE) exists for each SI."""
+	
 	if doc.mode_of_payment != "Cheque":
 		return
 
@@ -54,10 +54,7 @@ def on_payment_entry_submit(doc, method=None):
 
 
 def _find_cheque(sales_invoice: str, reference_no: str = None) -> str | None:
-	"""Find the best matching submitted+Cleared Cheque Tracker without a linked Payment Entry.
 
-	Tries an exact reference_no match first; falls back to FIFO (oldest cheque_date).
-	"""
 	base_filters = [
 		["sales_invoice", "=", sales_invoice],
 		["docstatus", "=", 1],
