@@ -47,6 +47,15 @@ doctype_js = {
 	"Sales Invoice": "public/js/sales_invoice.js",
 	"Payment Entry": "public/js/payment_entry.js",
 }
+
+after_install = ["cheque_tracker.cheque_tracker.customizations.employee_custom.create_custom_fields",
+                 "cheque_tracker.cheque_tracker.customizations.hr_settings_custom.create_custom_fields"]
+
+after_uninstall = ["cheque_tracker.cheque_tracker.customizations.employee_custom.delete_custom",
+                   "cheque_tracker.cheque_tracker.customizations.hr_settings_custom.delete_custom_fields"]
+
+after_migrate = ["cheque_tracker.cheque_tracker.customizations.employee_custom.create_custom_fields",
+                 "cheque_tracker.cheque_tracker.customizations.hr_settings_custom.create_custom_fields"]
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -157,7 +166,8 @@ fixtures = [
 
 scheduler_events = {
 	"daily": [
-		"cheque_tracker.cheque_tracker.tasks.send_cheque_due_notifications"
+		"cheque_tracker.cheque_tracker.tasks.send_cheque_due_notifications",
+		"cheque_tracker.cheque_tracker.notifications.employee_notify.send_qatar_id_expiry_notifications",
 	],
 }
 
