@@ -19,6 +19,13 @@ def create_custom_fields():
                 "insert_after": "qatar_id",
                 "reqd": 1
                 
+            },
+            {
+                "fieldname":"visa_type",
+                "fieldtype":"Data",
+                "label":"Visa Type",
+                "insert_after":"qatar_id_expiry_date",
+                "reqd":1
             }
         ]
     }
@@ -31,7 +38,7 @@ def create_custom_fields():
                 frappe.clear_cache(doctype=doctype)
 
 def delete_custom_fields(): 
-    custom_fields_to_delete = { "Employee": ["qatar_id","qatar_id_expiry_date"]}  
+    custom_fields_to_delete = { "Employee": ["qatar_id","qatar_id_expiry_date","visa_type"] }  
 
     for doctype, fields in custom_fields_to_delete.items(): 
         for field_name in fields: 
